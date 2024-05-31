@@ -7,9 +7,8 @@
     <meta name="author" content="Brian Mai">
     <title>16253649!</title>
 
-
-
     <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/board.css">
 </head>
 
 <body>
@@ -25,10 +24,10 @@
     <div class="container" id="select-board-container" style="display: none;">
         <h2>Select a starting board size.</h2>
         <div class="buttons">
-            <button>4x4</button>
-            <button>5x5</button>
-            <button>6x6</button>
-            <button>7x7</button>
+            <button id="button-4x4">4x4</button>
+            <button id="button-5x5">5x5</button>
+            <button id="button-6x6">6x6</button>
+            <button id="button-7x7">7x7</button>
             <button class="back-to-menu-button">Back to Menu</button>
         </div>
     </div>
@@ -42,6 +41,39 @@
         <p>You can move tiles into the adjacent empty square by clicking on it or using WASD and your arrow keys.</p>
         <p>It's surprisingly difficult at first to even solve the 4x4, but don't let that discourage you! The move input pattern becomes very clear with a bit of practice.</p>
 
+        <button class="back-to-menu-button">Back to Menu</button>
+    </div>
+
+    <!-- 4x4 board -->
+    <div id="board-4x4" style="display: none;">
+        <table>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
         <button class="back-to-menu-button">Back to Menu</button>
     </div>
 
