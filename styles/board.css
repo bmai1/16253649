@@ -1,19 +1,17 @@
 table {
     width: 25vw; 
     height: 50vh;
-    
+    table-layout: fixed;
 }
 
-td, th {
+td {
     border: 2px black solid;
-    border-collapse: separate;
     border-spacing: 5px;
     border-radius: 10px; 
-
     font-size: 1.5rem;
     text-align: center;
-    
 }
+
 
 #board-4x4 {
     /* background-color: red; */

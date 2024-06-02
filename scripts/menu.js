@@ -15,13 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectBoardContainer = document.getElementById("select-board-container");
     const howToPlayContainer = document.getElementById("how-to-play-container");
 
-    // Game boards
-    const board4x4 = document.getElementById("board-4x4");
-    const board5x5 = document.getElementById("board-5x5");
-    const board6x6 = document.getElementById("board-6x6");
-    const board7x47= document.getElementById("board-7x7");
-
-
     // Menu button events
     startButton.addEventListener("click", function() {
         welcomeContainer.style.display = "none";
@@ -40,9 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Load starting board
     button4x4.addEventListener("click", function() {
         selectBoardContainer.style.display = "none";
         board4x4.style.display = "block";
+        newGame(b4x4);
     });
 });
 
