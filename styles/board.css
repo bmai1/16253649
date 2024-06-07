@@ -1,3 +1,7 @@
+#main-interface, #board-4x4, #board-5x5, #board-6x6, #board-7x7 {
+    display: none;
+}
+
 table {
     width: 25vw; 
     height: 50vh;
@@ -12,15 +16,41 @@ td {
     text-align: center;
 }
 
-
-#board-4x4 {
-    /* background-color: red; */
+.controls {
+    display: flex;
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    width: 25vw;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    position: relative; /* Fix the positions within the container */
+    margin-top: 10px;
 }
 
+.controls div {
+    padding: 5px;
+    font-size: 0.9vw;
+    /* white-space: nowrap; Keep text in a single line */
+}
+
+.time, .moves, .total {
+    width: 100px; /* Set fixed width */
+    text-align: center;
+    flex-shrink: 0; /* Prevent shrinking */
+}
 
 @media (max-width: 700px) {
     table {
         width: 70vw;
         height: 45vh;
+    }
+    .controls {
+        width: 70vw;
+    }
+    .controls div {
+        padding: 3px;
+        font-size: 2.5vw;
     }
 }

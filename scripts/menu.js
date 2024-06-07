@@ -28,12 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for (let i = 0; i < backToMenuButtons.length; ++i) {
         backToMenuButtons[i].addEventListener("click", function() {
+            stopTimer();
+            totalTimeOffset = 0;
+            timerRunningFlag = false;
+            if (paused) pause();
+            pauseEnabled = false;
             clearContainers();
             welcomeContainer.style.display = "block";
         });
     }
 
-    // Load starting board
+    // Select starting board
     button4x4.addEventListener("click", function() {
         selectBoardContainer.style.display = "none";
         board4x4.style.display = "block";

@@ -76,6 +76,13 @@ const editBoard = (direction) => {
     }
 }
 
+const incrementMoveCount = () => {
+    ++moveCount; 
+    ++totalMoveCount; 
+    moveCounter.innerHTML = moveCount;
+    totalMoveCounter.innerHTML = moveCount;
+}
+
 let colorTheme;
 const setColorTheme = (theme) => {
     // [correct, empty, incorrect]
@@ -129,9 +136,14 @@ const checkSolved = () => {
             if (boardArray[i][j] != solution[i][j]) { return; }
         }
     }
-    
-    // stopTimer();
-    // stopTrackingAPM();
 
+    stopTimer();
+    // parse milliseconds from HTML string to remember time for next board
+    totalTimeOffset = totalTime.innerHTML.split(':').reduce((acc, val, idx) => acc + parseInt(val) * [60000, 1000, 1][idx], 0);
+    // console.log(totalTimeOffset);
+
+    timerRunningFlag = false;
+    pauseEnabled = false;
+    // stopTrackingAPM();
     moveLock = true;
 }

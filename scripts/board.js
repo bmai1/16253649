@@ -23,8 +23,12 @@ let s7x7 = [[1,2,3,4,5,6,7],[8,9,10,11,12,13,14],[15,16,17,18,19,20,21],[22,23,2
 
 let empty = [-1, -1]; // location [row, col] of empty cell
 
+const moveCounter = document.getElementById("moves");
+const totalMoveCounter = document.getElementById("total-moves");
 let moveLock;
-let moveCount;
+let moveCount = 0;
+let totalMoveCount = 0;
+
 let timerRunningFlag = false;
 
 // Handle keyboard input
@@ -37,29 +41,39 @@ window.onkeydown = e => {
     else if ((e.key == "ArrowRight" || e.key == "d") && empty[1] != 0) { editBoard("right"); }
     else return; 
 
-    // if (!timerRunningFlag) {
-    //    startTimer(); 
-    //    startTrackingAPM();
-    //    timerRunningFlag = true;
-    // }
+    if (!timerRunningFlag) {
+       startTimer(); 
+       timerRunningFlag = true;
+       pauseEnabled = true;
+    }
 
-    ++moveCount;
+    incrementMoveCount();
     renderBoard();
     colorBoard();
     checkSolved();
 }
 
+const mainInterface = document.getElementById("main-interface");
 const newGame = (startBoard) => {
+    mainInterface.style.display = "block";
+
     setBoard(startBoard);
     setColorTheme(1);
     
     do { shuffleBoard(boardArray); }
     while (!solvable(boardArray.flat()));
 
+    stopTimer();
+    timerRunningFlag = false;
+    pauseEnabled = false;
+    time.innerText = "00:00:00";
+    totalTime.innerText = "00:00:00";
+
     moveLock = false;
     moveCount = 0;
-    // timerElement.innerText = "00:00:000";
-    // moveCounter.innerText = "Moves: 0";
+    totalMoveCount = 0;
+    moveCounter.innerText = "0";
+    totalMoveCounter.innerText = "0";
 
     renderBoard();
     colorBoard();
