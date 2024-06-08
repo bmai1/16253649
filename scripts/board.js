@@ -2,6 +2,8 @@
 let board = null;
 let boardArray = null;
 let solution = null;
+let boardsSolved = 0;
+let boardsRemaining = [];
 
 // Game board elements
 const board4x4 = document.getElementById("board-4x4");
@@ -35,10 +37,10 @@ let timerRunningFlag = false;
 window.onkeydown = e => {
     if (moveLock) return;
 
-    if ((e.key == "ArrowUp" || e.key == "w") && empty[0] != boardSize - 1) { editBoard("up"); }
-    else if ((e.key == "ArrowDown" || e.key == "s") && empty[0] != 0) { editBoard("down"); }
-    else if ((e.key == "ArrowLeft" || e.key == "a") && empty[1] != boardSize - 1) { editBoard("left"); }
-    else if ((e.key == "ArrowRight" || e.key == "d") && empty[1] != 0) { editBoard("right"); }
+    if ((e.key == "ArrowUp" || e.key == "w") && empty[0] != boardSize - 1) editBoard("up");
+    else if ((e.key == "ArrowDown" || e.key == "s") && empty[0] != 0) editBoard("down");
+    else if ((e.key == "ArrowLeft" || e.key == "a") && empty[1] != boardSize - 1) editBoard("left");
+    else if ((e.key == "ArrowRight" || e.key == "d") && empty[1] != 0) editBoard("right");
     else return; 
 
     if (!timerRunningFlag) {
@@ -55,25 +57,27 @@ window.onkeydown = e => {
 
 const mainInterface = document.getElementById("main-interface");
 const newGame = (startBoard) => {
-    mainInterface.style.display = "block";
-
+    if (board) board.style.display = "none";
     setBoard(startBoard);
     setColorTheme(1);
+    // shuffleRemaining();
     
     do { shuffleBoard(boardArray); }
-    while (!solvable(boardArray.flat()));
+    while (!solvable(boardArray.flat()) || checkCorrect() < boardSize);
+
+    // console.log(checkCorrect());
 
     stopTimer();
     timerRunningFlag = false;
     pauseEnabled = false;
     time.innerText = "00:00:00";
-    totalTime.innerText = "00:00:00";
+    // Don't reset totalTime, since it carries on to next board
+    // Reset if back to menu (menu.js)
 
     moveLock = false;
     moveCount = 0;
-    totalMoveCount = 0;
     moveCounter.innerText = "0";
-    totalMoveCounter.innerText = "0";
+    // Don't reset totalMoves, since it carries on to next board
 
     renderBoard();
     colorBoard();
