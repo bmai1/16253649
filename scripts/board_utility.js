@@ -107,6 +107,38 @@ const colorBoard = () => {
     }
 }
 
+// Hide navigational buttons and controls on main interface
+const navButtons = document.getElementById("nav-buttons");
+const controls = document.getElementById("controls");
+let hiddenControls = false;
+let hideButtonClicked = false;
+
+const zen = () => {
+    if (!hiddenControls) {
+        navButtons.style.opacity = 0;
+        controls.style.opacity = 0;
+        controls.style.pointerEvents = "none";
+        hiddenControls = true;
+        hideButtonClicked = true;
+    } 
+    else {
+        navButtons.style.opacity = 1;
+        controls.style.opacity = 1;
+        controls.style.pointerEvents = "auto";
+        hiddenControls = false;
+    }
+}
+
+document.body.addEventListener('click', function(event) {
+    if (hiddenControls && !hideButtonClicked) {
+        navButtons.style.opacity = 1;
+        controls.style.opacity = 1;
+        hiddenControls = false;
+    }
+    hideButtonClicked = false; 
+});
+
+
 // (Shubham Singh) https://github.com/imshubhamsingh/15-puzzle/commit/e016ad30a9560d2450618a99e9e5b218123f50ae#diff-8478a7bac0240dc851826c916a23b44e3e318bf3e480424aea77d533e1d770fe
 const solvable = puzzle => {
     let parity = 0;

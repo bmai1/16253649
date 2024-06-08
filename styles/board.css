@@ -16,7 +16,23 @@ td {
     text-align: center;
 }
 
-.controls {
+#nav-buttons {
+    width: 25vw;
+    /* background-color: #c9c9c9; */
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: opacity 0.5s;
+}
+
+.nav-button {
+    background-color: #fff;
+    padding: 15px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+#controls {
     display: flex;
     justify-content: space-between; /* Space items evenly */
     align-items: center; /* Center items vertically */
@@ -27,9 +43,10 @@ td {
     box-sizing: border-box; /* Include padding in width calculation */
     position: relative; /* Fix the positions within the container */
     margin-top: 10px;
+    transition: opacity 0.5s;
 }
 
-.controls div {
+#controls div {
     padding: 5px;
     font-size: 0.9vw;
     /* white-space: nowrap; Keep text in a single line */
@@ -46,10 +63,16 @@ td {
         width: 70vw;
         height: 45vh;
     }
-    .controls {
+    #nav-buttons{
         width: 70vw;
     }
-    .controls div {
+    .nav-button {
+        margin: 1vw;;
+    }
+    #controls {
+        width: 70vw;
+    }
+    #controls div {
         padding: 3px;
         font-size: 2.5vw;
     }

@@ -36,9 +36,9 @@
     <div class="container" id="how-to-play-container" style="display: none;">
         <h2>How to Play</h2>
         <p>16253649! is a spin-off of 15-puzzle. In this game, the objective is to solve a 4x4, 5x5, 6x6, and 7x7 board as fast as possible.</p>
-        <p>You may choose what board to begin with, and three boards that come after will be random. To solve a board, you must arrange the numbers in ascending order starting from 1 to the last number like so:</p>
-        <img src="path/to/your/image.png" alt="Puzzle Example" style="width: 200px; height: 200px;">
-        <p>You can move tiles into the adjacent empty square by clicking on it or using WASD and your arrow keys.</p>
+        <p>You may choose which board to begin with, and three boards that come after will be randomized. To solve a board, you must arrange the numbers in ascending order starting from 1 to the last number like so:</p>
+        <img src="../images/solved.png" alt="Puzzle Example" style="width: 200px; height: 200px;">
+        <p>You can move tiles into the adjacent empty square by clicking on it or using WASD and your arrow keys. White tiles indicate the number is in the correct position, grey tiles indicate the number is at an incorrect position, and dark grey tiles indicate the position is empty.</p>
         <p>It's surprisingly difficult at first to even solve the 4x4, but don't let that discourage you! The move input pattern becomes very clear with a bit of practice.</p>
 
         <button class="back-to-menu-button">Back to Menu</button>
@@ -46,8 +46,13 @@
 
     
     <div id="main-interface">
-        <button class="back-to-menu-button">Menu</button>
-        <button id="pause-button" onclick="pause()">Pause</button>
+        <div id="nav-buttons">
+            <button class="back-to-menu-button nav-button">Menu</button>
+            <button id="focus-button" class="nav-button" onclick="zen()">Focus</button>
+            <button id="pause-button" class="nav-button" onclick="pause()">Pause</button>
+            <button id="next-button"  class="nav-button">Next</button>
+        </div>
+
         <div id="board-4x4">
             <table>
                 <tbody>
@@ -247,7 +252,7 @@
             </table>
         </div>
     
-        <div class="controls">
+        <div id="controls">
             <div>Time: <span id="time">00:00:00</span></div>
             <div>Total: <span id="total-time">00:00:00</span></div>
             <div>Moves: <span id="moves">0</span></div>

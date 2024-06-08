@@ -48,7 +48,7 @@ const pause = () => {
 
     if (paused) {
         pauseButton.innerText = "Pause";
-        pauseButton.style.backgroundColor = "#fff";
+        pauseButton.style.backgroundColor = "";
         moveLock = false;
 
         startTime = Date.now() - elapsedTime;
