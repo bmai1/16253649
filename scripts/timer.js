@@ -47,6 +47,7 @@ const pause = () => {
     if (!pauseEnabled) return;
 
     if (paused) {
+        board.style.opacity = 1;
         pauseButton.innerText = "Pause";
         pauseButton.style.backgroundColor = "";
         moveLock = false;
@@ -57,6 +58,7 @@ const pause = () => {
         paused = false;
     }
     else { 
+        board.style.opacity = 0;
         pauseButton.innerText = "Resume";
         pauseButton.style.backgroundColor = "#f0f0f0";
         moveLock = true;
