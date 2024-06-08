@@ -7,7 +7,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Space Grotesk';
     background-color: #fff;
 }
 
@@ -49,6 +49,7 @@ footer {
     bottom: 10px;
     font-size: 0.9rem;
     color: #888;
+    transition: opacity 0.5s;
 }
 
 @keyframes fadeIn {
@@ -76,6 +77,10 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 600px) {
+    #how-to-play-container {
+        margin-top: 125px;
+    }
+
     h2 {
         font-size: 1.2rem;
     }

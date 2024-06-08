@@ -2,10 +2,26 @@
     display: none;
 }
 
+#main-interface div {
+    transition: opacity 0.5s;
+}
+
+#main-interface {
+    position: fixed;
+    top: -100%;
+    transition: top 1s ease-in-out;
+}
+
+.show {
+    top: 15% !important; 
+}
+
 table {
     width: 25vw; 
     height: 50vh;
     table-layout: fixed;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    user-select: none;
 }
 
 td {
@@ -22,7 +38,6 @@ td {
     border: 1px solid #000;
     border-radius: 4px;
     margin-bottom: 10px;
-    transition: opacity 0.5s;
 }
 
 .nav-button {
@@ -34,28 +49,27 @@ td {
 
 #controls {
     display: flex;
-    justify-content: space-between; /* Space items evenly */
-    align-items: center; /* Center items vertically */
+    justify-content: space-between;
+    align-items: center;
     width: 25vw;
     border: 1px solid #000;
     border-radius: 4px;
     padding: 10px;
-    box-sizing: border-box; /* Include padding in width calculation */
-    position: relative; /* Fix the positions within the container */
+    box-sizing: border-box; 
+    position: relative;
     margin-top: 10px;
-    transition: opacity 0.5s;
 }
 
 #controls div {
+    width: 80px;
     padding: 5px;
     font-size: 0.9vw;
-    /* white-space: nowrap; Keep text in a single line */
 }
 
 .time, .moves, .total {
-    width: 100px; /* Set fixed width */
+    width: 100px;
     text-align: center;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
 }
 
 @media (max-width: 700px) {
