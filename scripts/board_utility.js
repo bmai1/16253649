@@ -20,20 +20,42 @@ const setBoard = currBoard => {
             break;
     }
     rows = board.getElementsByTagName("tr");
+    board.style.display = "block";
 }
 
-// Fisher-Yates (array) shuffling algorithm
+let shuffleLimit; // ADJUST DIFFICULT WITH SHUFFLE LIMIT
+
+// Fisher-Yates (array) shuffling algorithm for 2d array
 const shuffleBoard = array => {
     let currentIndex = boardSize * boardSize;
+    let count = 0;
+
+    // bigger boards take too long
+    if (boardSize == 4) shuffleLimit = 16;
+    if (boardSize == 5) shuffleLimit = 4;
+    if (boardSize == 6) shuffleLimit = 2;
+    if (boardSize == 7) shuffleLimit = 1;
+
     while (currentIndex !== 0) {
-        const randomIndex = Math.floor(Math.random() * currentIndex--);
-        const currentRow = Math.floor(currentIndex / boardSize);
-        const currentColumn = currentIndex % boardSize;
-        const randomRow = Math.floor(randomIndex / boardSize);
-        const randomColumn = randomIndex % boardSize;
-        const temp = array[currentRow][currentColumn];
+        if (++count > shuffleLimit) break;
+        let randomIndex = Math.floor(Math.random() * currentIndex--);
+        let currentRow = Math.floor(currentIndex / boardSize);
+        let currentColumn = currentIndex % boardSize;
+        let randomRow = Math.floor(randomIndex / boardSize);
+        let randomColumn = randomIndex % boardSize;
+        let temp = array[currentRow][currentColumn];
         array[currentRow][currentColumn] = array[randomRow][randomColumn];
         array[randomRow][randomColumn] = temp;
+    }
+}
+
+// Durstenfeld shuffle to randomize boards left
+const shuffleRemaining = () => {
+    for (var i = boardsRemaining.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = boardsRemaining[i];
+        boardsRemaining[i] = boardsRemaining[j];
+        boardsRemaining[j] = temp;
     }
 }
 
@@ -80,7 +102,7 @@ const incrementMoveCount = () => {
     ++moveCount; 
     ++totalMoveCount; 
     moveCounter.innerHTML = moveCount;
-    totalMoveCounter.innerHTML = moveCount;
+    totalMoveCounter.innerHTML = totalMoveCount;
 }
 
 let colorTheme;
@@ -165,7 +187,7 @@ const solvable = puzzle => {
 const checkSolved = () => {
     for (let i = 0; i < boardSize; ++i) {
         for (let j = 0; j < boardSize; ++j) {
-            if (boardArray[i][j] != solution[i][j]) { return; }
+            if (boardArray[i][j] != solution[i][j]) return; 
         }
     }
 
@@ -176,6 +198,28 @@ const checkSolved = () => {
 
     timerRunningFlag = false;
     pauseEnabled = false;
-    // stopTrackingAPM();
     moveLock = true;
+    if (boardsSolved == boardsRemaining.length) {
+        console.log("You win");
+    }
+    else {
+        nextButton.style.display = "";
+    }
+}
+
+const checkCorrect = () => {
+    let correct = 0;
+    for (let i = 0; i < boardSize; ++i) {
+        for (let j = 0; j < boardSize; ++j) {
+            if (boardArray[i][j] == solution[i][j]) ++correct;
+        }
+    }
+    return correct;
+}
+
+const nextButton = document.getElementById("next-button");
+const nextBoard = () => {
+    nextButton.style.display = "none";
+    newGame(boardsRemaining[boardsSolved]);
+    ++boardsSolved;
 }
