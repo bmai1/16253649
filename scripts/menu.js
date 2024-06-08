@@ -15,42 +15,86 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectBoardContainer = document.getElementById("select-board-container");
     const howToPlayContainer = document.getElementById("how-to-play-container");
 
+    const footer = document.getElementById("footer");
+
     // Menu button events
     startButton.addEventListener("click", function() {
-        welcomeContainer.style.display = "none";
+        clearContainers();
         selectBoardContainer.style.display = "block";
     });
 
     rulesButton.addEventListener("click", function() {
-        welcomeContainer.style.display = "none";
+        clearContainers();
+        footer.style.opacity = 0;
         howToPlayContainer.style.display = "block";
     });
 
     for (let i = 0; i < backToMenuButtons.length; ++i) {
         backToMenuButtons[i].addEventListener("click", function() {
             stopTimer();
-            totalTimeOffset = 0;
             timerRunningFlag = false;
+            totalTimeOffset = 0;
+            totalMoveCount = 0;
+            totalTime.innerText = "00:00:00";
+            totalMoveCounter.innerText = "0";
             if (paused) pause();
             pauseEnabled = false;
+
             clearContainers();
+            mainInterface.classList = "";
+            footer.style.opacity = 1;
             welcomeContainer.style.display = "block";
         });
     }
 
     // Select starting board
     button4x4.addEventListener("click", function() {
-        selectBoardContainer.style.display = "none";
-        board4x4.style.display = "block";
+        clearContainers();
         newGame(b4x4);
+        slideInterface();
+        boardsSolved = 0;
+        boardsRemaining = [b5x5, b6x6, b7x7];
+    });
+
+    button5x5.addEventListener("click", function() {
+        clearContainers();
+        newGame(b5x5);
+        slideInterface();
+        boardsSolved = 0;
+        boardsRemaining = [b4x4, b6x6, b7x7];
+    });
+
+    button6x6.addEventListener("click", function() {
+        clearContainers();
+        newGame(b6x6);
+        slideInterface();
+        boardsSolved = 0;
+        boardsRemaining = [b4x4, b5x5, b7x7];
+    });
+
+    button7x7.addEventListener("click", function() {
+        clearContainers();
+        newGame(b7x7);
+        slideInterface();
+        boardsSolved = 0;
+        boardsRemaining = [b4x4, b5x5, b6x6];
     });
 });
 
-function clearContainers() {
+const clearContainers = () => {
     const elements = document.body.children;
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].tagName.toLowerCase() !== 'footer') {
             elements[i].style.display = 'none';
         }
     }
+}
+
+const slideInterface = () => {
+    mainInterface.style.display = "block";
+    mainInterface.classList = "";
+    // Timeout for scroll transition to play
+    setTimeout(() => {
+        mainInterface.classList.add("show");
+    }, 5);
 }
