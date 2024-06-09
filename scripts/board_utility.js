@@ -33,7 +33,7 @@ const shuffleBoard = array => {
     // bigger boards take too long
     if (boardSize == 4) shuffleLimit = 16;
     if (boardSize == 5) shuffleLimit = 4;
-    if (boardSize == 6) shuffleLimit = 2;
+    if (boardSize == 6) shuffleLimit = 1;
     if (boardSize == 7) shuffleLimit = 1;
 
     while (currentIndex !== 0) {
