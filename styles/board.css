@@ -34,7 +34,6 @@ td {
 
 #nav-buttons {
     width: 25vw;
-    /* background-color: #c9c9c9; */
     border: 1px solid #000;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -42,7 +41,7 @@ td {
 
 .nav-button {
     background-color: #fff;
-    padding: 15px;
+    padding: 10px;
     border: 2px solid #fff;
     border-radius: 50%;
 }
@@ -66,12 +65,6 @@ td {
     font-size: 0.9vw;
 }
 
-.time, .moves, .total {
-    width: 100px;
-    text-align: center;
-    flex-shrink: 0;
-}
-
 .theme-example {
     cursor: pointer;
     height: 6vh; 
@@ -83,7 +76,6 @@ td {
 }
 
 .theme-example td:hover {
-    font-size: 1.02rem;
     border: 2.2px solid black;
 }
 

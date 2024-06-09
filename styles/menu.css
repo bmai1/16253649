@@ -5,18 +5,10 @@ body, html {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     font-family: 'Space Grotesk';
     background-color: #fff;
-}
-
-.container {
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-    max-width: 800px;
-    margin: 0 20px;
 }
 
 h2 {
@@ -44,20 +36,23 @@ button:hover {
     background-color: #f0f0f0;
 }
 
-footer {
-    position: absolute;
-    bottom: 10px;
-    font-size: 0.9rem;
-    color: #888;
-    transition: opacity 0.5s;
+.container {
+    text-align: center;
+    opacity: 0;
+    max-width: 800px;
+    margin: 0 20px;
+    animation: fadeIn 0.5s forwards;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+.hidden {
+    bottom: -100% !important;
 }
 
+#select-board-container {
+    position: fixed;
+    bottom: 45%;
+    transition: bottom 1s ease-in-out;
+}
 
 #how-to-play-container p {
     font-size: 1rem;
@@ -73,6 +68,29 @@ footer {
     border: 1px solid #000;
     width: 80%;
     max-width: 300px; 
+}
+
+#theme-notification {
+    position: fixed; 
+    top: 10%;  
+    left: 50%;  
+    transform: translate(-50%);
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: #888;
+    transition: opacity 0.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 /* Mobile Styles */

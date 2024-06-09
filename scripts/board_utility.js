@@ -105,18 +105,41 @@ const incrementMoveCount = () => {
     totalMoveCounter.innerHTML = totalMoveCount;
 }
 
+const themeNotification = document.getElementById("theme-notification");
 let colorThemes = [
     // [correct, incorrect, empty]
-    ["#ffffff", "#ffffff", "#ffffff"], // 0. clean
-    ["#ffffff", "#bbbbbb", "#444444"], // 1. slate
-    ["#ffffff", "#000000", "#444444"], // 2. blindfold
+    ["#ffffff", "#bbbbbb", "#444444"], // 0. slate
+    ["#ffbadb", "#9ebffa", "#ffffff"], // 1. sakura blue
+    ["#ffffff", "#ffffff", "#ffffff"], // 2. clean
     ["#ffbadb", "#ffbadb", "#ffffff"], // 3. sakura
-    ["#ffbadb", "#9ebffa", "#ffffff"], // 4. sakura blues
-    ["#ffeda6", "#9ebffa", "#ffffff"], // 5. sunny / blue lemonade
-    ["#ffeda6", "#ffb37a", "#ffffff"], // 6. heatwave
+    ["#ffffff", "#000000", "#444444"], // 4. blindfold
+    ["#222222", "#000000", "#222222"], // 5. masochist
 ]
 let colorTheme = ["#ffffff", "#bbbbbb", "#444444"]; // default as slate
 const setColorTheme = (theme) => {
+    switch (theme) {
+        case 0:
+            themeNotification.innerText = "Slate: The default board theme.";
+            break;
+        case 1:
+            themeNotification.innerText = "Sakura Blue: Get it?";
+            break;
+        case 2:
+            themeNotification.innerText = "Clean: For the enlightened.";
+            break;
+        case 3:
+            themeNotification.innerText = "Sakura: It's pink season.";
+            break;
+        case 4:
+            themeNotification.innerText = "Blindfold: Now it's a memory game.";
+            break;
+        case 5:
+            themeNotification.innerText = "You don't value your time (or eyes), do you?";
+            break;
+    }
+
+    themeNotification.style.opacity = 1;
+
     colorTheme = colorThemes[theme];
 }
 

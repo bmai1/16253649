@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="A spin-off of the popular game 15-puzzle with additional features">
     <meta name="author" content="Brian Mai">
     <title>16253649!</title>
 
+    <link rel="shortcut icon" href="../images/1625.png">
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/board.css">
 
@@ -17,6 +18,7 @@
 <body>
     <!-- Menu -->
     <div class="container" id="welcome-container">
+        <p id="theme-notification"></p>
         <h2>Welcome to</h2>
         <h1 style="font-family: Plus Jakarta Sans">16253649!</h1>
         <button id="start-button">Start</button>
@@ -40,57 +42,50 @@
     <div class="container" id="themes-container" style="display: none;">
         <h2>Select a board theme.</h2>
         <table class="theme-example back-to-menu-button" onclick="setColorTheme(0)">
-            <tr>
+            <tr> Easy
                 <td style="background-color: #ffffff;"></td>
-                <td style="background-color: #ffffff;">clean</td>
-                <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #bbbbbb;">Slate (default)</td>
+                <td style="background-color: #444444;"></td>
             </tr>
         </table>
         <table class="theme-example back-to-menu-button" onclick="setColorTheme(1)">
             <tr>
+                <td style="background-color: #ffbadb;"></td>
+                <td style="background-color: #9ebffa;">Sakura Blue</td>
                 <td style="background-color: #ffffff;"></td>
-                <td style="background-color: #bbbbbb;">slate (default)</td>
-                <td style="background-color: #444444;"></td>
             </tr>
         </table>
+        <br>
         <table class="theme-example back-to-menu-button" onclick="setColorTheme(2)">
-            <tr>
+            <tr> Hard
                 <td style="background-color: #ffffff;"></td>
-                <td style="background-color: #000000; color: white;">blindfold</td>
-                <td style="background-color: #444444;"></td>
+                <td style="background-color: #ffffff;">Clean</td>
+                <td style="background-color: #ffffff;"></td>
             </tr>
         </table>
         <table class="theme-example back-to-menu-button" onclick="setColorTheme(3)">
             <tr>
                 <td style="background-color: #ffbadb;"></td>
-                <td style="background-color: #ffbadb;">sakura</td>
+                <td style="background-color: #ffbadb;">Sakura</td>
                 <td style="background-color: #ffffff;"></td>
             </tr>
         </table>
+        <br>
         <table class="theme-example back-to-menu-button" onclick="setColorTheme(4)">
-            <tr>
-                <td style="background-color: #ffbadb;"></td>
-                <td style="background-color: #9ebffa;">sakura blue</td>
+            <tr> Impossible
                 <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #000000; color: white;">Blindfold</td>
+                <td style="background-color: #444444;"></td>
             </tr>
         </table>
-        
-        <!-- <table class="theme-example back-to-menu-button" onclick="setColorTheme(5)">
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(5)">
             <tr>
-                <td style="background-color: #ffeda6;"></td>
-                <td style="background-color: #9ebffa;">sunny</td>
-                <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #222222;"></td>
+                <td style="background-color: #000000; color: white;">Masochist</td>
+                <td style="background-color: #222222;"></td>
             </tr>
         </table>
-
-        <table class="theme-example back-to-menu-button" onclick="setColorTheme(6)">
-            <tr>
-                <td style="background-color: #ffeda6;"></td>
-                <td style="background-color: #ffb37a;">heatwave</td>
-                <td style="background-color: #ffffff;"></td>
-            </tr>
-        </table> -->
-                
+          
         <button class="back-to-menu-button">Back to Menu</button>
     </div>
 
