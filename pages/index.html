@@ -20,6 +20,7 @@
         <h2>Welcome to</h2>
         <h1 style="font-family: Plus Jakarta Sans">16253649!</h1>
         <button id="start-button">Start</button>
+        <button id="themes-button">Themes</button>
         <button id="rules-button">How to Play</button>
     </div>
 
@@ -33,6 +34,64 @@
             <button id="button-7x7">7x7</button>
             <button class="back-to-menu-button">Back to Menu</button>
         </div>
+    </div>
+
+    <!-- Select board theme -->
+    <div class="container" id="themes-container" style="display: none;">
+        <h2>Select a board theme.</h2>
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(0)">
+            <tr>
+                <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #ffffff;">clean</td>
+                <td style="background-color: #ffffff;"></td>
+            </tr>
+        </table>
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(1)">
+            <tr>
+                <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #bbbbbb;">slate (default)</td>
+                <td style="background-color: #444444;"></td>
+            </tr>
+        </table>
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(2)">
+            <tr>
+                <td style="background-color: #ffffff;"></td>
+                <td style="background-color: #000000; color: white;">blindfold</td>
+                <td style="background-color: #444444;"></td>
+            </tr>
+        </table>
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(3)">
+            <tr>
+                <td style="background-color: #ffbadb;"></td>
+                <td style="background-color: #ffbadb;">sakura</td>
+                <td style="background-color: #ffffff;"></td>
+            </tr>
+        </table>
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(4)">
+            <tr>
+                <td style="background-color: #ffbadb;"></td>
+                <td style="background-color: #9ebffa;">sakura blue</td>
+                <td style="background-color: #ffffff;"></td>
+            </tr>
+        </table>
+        
+        <!-- <table class="theme-example back-to-menu-button" onclick="setColorTheme(5)">
+            <tr>
+                <td style="background-color: #ffeda6;"></td>
+                <td style="background-color: #9ebffa;">sunny</td>
+                <td style="background-color: #ffffff;"></td>
+            </tr>
+        </table>
+
+        <table class="theme-example back-to-menu-button" onclick="setColorTheme(6)">
+            <tr>
+                <td style="background-color: #ffeda6;"></td>
+                <td style="background-color: #ffb37a;">heatwave</td>
+                <td style="background-color: #ffffff;"></td>
+            </tr>
+        </table> -->
+                
+        <button class="back-to-menu-button">Back to Menu</button>
     </div>
 
     <!-- How to Play -->

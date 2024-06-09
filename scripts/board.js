@@ -59,7 +59,6 @@ const mainInterface = document.getElementById("main-interface");
 const newGame = (startBoard) => {
     if (board) board.style.display = "none";
     setBoard(startBoard);
-    setColorTheme(1);
     // shuffleRemaining();
     
     do { shuffleBoard(boardArray); }

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Menu Buttons
     const startButton = document.getElementById("start-button");
+    const themesButton = document.getElementById("themes-button")
     const rulesButton = document.getElementById("rules-button");
 
     const backToMenuButtons = document.getElementsByClassName("back-to-menu-button");
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Menu Containers
     const welcomeContainer = document.getElementById("welcome-container");
     const selectBoardContainer = document.getElementById("select-board-container");
+    const themesContainer = document.getElementById("themes-container");
     const howToPlayContainer = document.getElementById("how-to-play-container");
 
     const footer = document.getElementById("footer");
@@ -21,6 +23,11 @@ document.addEventListener("DOMContentLoaded", function() {
     startButton.addEventListener("click", function() {
         clearContainers();
         selectBoardContainer.style.display = "block";
+    });
+
+    themesButton.addEventListener("click", function() {
+        clearContainers();
+        themesContainer.style.display = "block"; 
     });
 
     rulesButton.addEventListener("click", function() {
@@ -39,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
             totalMoveCounter.innerText = "0";
             if (paused) pause();
             pauseEnabled = false;
+
+            nextButton.style.display = "none"; // In case current board is solved
 
             clearContainers();
             mainInterface.classList = "";

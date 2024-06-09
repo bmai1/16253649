@@ -72,6 +72,21 @@ td {
     flex-shrink: 0;
 }
 
+.theme-example {
+    cursor: pointer;
+    height: 6vh; 
+    padding: 5px;
+}
+
+.theme-example td {
+    font-size: 1rem;
+}
+
+.theme-example td:hover {
+    font-size: 1.02rem;
+    border: 2.2px solid black;
+}
+
 @media (max-width: 700px) {
     table {
         width: 70vw;

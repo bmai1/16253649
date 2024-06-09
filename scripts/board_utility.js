@@ -105,10 +105,19 @@ const incrementMoveCount = () => {
     totalMoveCounter.innerHTML = totalMoveCount;
 }
 
-let colorTheme;
+let colorThemes = [
+    // [correct, incorrect, empty]
+    ["#ffffff", "#ffffff", "#ffffff"], // 0. clean
+    ["#ffffff", "#bbbbbb", "#444444"], // 1. slate
+    ["#ffffff", "#000000", "#444444"], // 2. blindfold
+    ["#ffbadb", "#ffbadb", "#ffffff"], // 3. sakura
+    ["#ffbadb", "#9ebffa", "#ffffff"], // 4. sakura blues
+    ["#ffeda6", "#9ebffa", "#ffffff"], // 5. sunny / blue lemonade
+    ["#ffeda6", "#ffb37a", "#ffffff"], // 6. heatwave
+]
+let colorTheme = ["#ffffff", "#bbbbbb", "#444444"]; // default as slate
 const setColorTheme = (theme) => {
-    // [correct, empty, incorrect]
-    if (theme == 1) colorTheme = ["#fff", "#858585", "#c4c4c4"];
+    colorTheme = colorThemes[theme];
 }
 
 // Colors cells to indicate correctness
@@ -116,14 +125,17 @@ const colorBoard = () => {
     for (let i = 0; i < boardSize; ++i) {
         let cells = rows[i].getElementsByTagName("td");
         for (let j = 0; j < boardSize; ++j) {
+            // correct
             if (boardArray[i][j] != 0 && boardArray[i][j] == solution[i][j]) {
                 cells[j].style.backgroundColor = colorTheme[0];
             }
+            // empty
             else if (boardArray[i][j] == 0) {
-                cells[j].style.backgroundColor = colorTheme[1]; 
-            }
-            else { 
                 cells[j].style.backgroundColor = colorTheme[2]; 
+            }
+            // incorrect
+            else { 
+                cells[j].style.backgroundColor = colorTheme[1]; 
             }         
         }
     }
