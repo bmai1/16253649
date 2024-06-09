@@ -45,7 +45,7 @@ button:hover {
 }
 
 .hidden {
-    bottom: -100% !important;
+    bottom: -100% !important; /* override select-board-container position to add scroll effect */
 }
 
 #select-board-container {

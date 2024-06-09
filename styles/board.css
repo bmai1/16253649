@@ -13,7 +13,7 @@
 }
 
 .show {
-    top: 15% !important; 
+    top: 15% !important; /* override main-interface position to add scroll effect */
 }
 
 table {
