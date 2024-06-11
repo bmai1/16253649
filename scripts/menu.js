@@ -5,11 +5,6 @@ const rulesButton = document.getElementById("rules-button");
 
 const backToMenuButtons = document.getElementsByClassName("back-to-menu-button");
 
-const button4x4 = document.getElementById("button-4x4");
-const button5x5 = document.getElementById("button-5x5");
-const button6x6 = document.getElementById("button-6x6");
-const button7x7 = document.getElementById("button-7x7");
-
 // Menu Containers
 const welcomeContainer = document.getElementById("welcome-container");
 const selectBoardContainer = document.getElementById("select-board-container");
@@ -37,6 +32,7 @@ rulesButton.addEventListener("click", function() {
 
 for (let i = 0; i < backToMenuButtons.length; ++i) {
     backToMenuButtons[i].addEventListener("click", function() {
+        // Reset all
         stopTimer();
         timerRunningFlag = false;
         totalTimeOffset = 0;
@@ -46,52 +42,47 @@ for (let i = 0; i < backToMenuButtons.length; ++i) {
         if (paused) pause();
         pauseEnabled = false;
 
-        nextButton.style.display = "none"; // In case current board is solved
-
         clearContainers();
-        mainInterface.classList = "";
-        selectBoardContainer.classList = "container";
-
+        nextButton.style.display = "none"; 
+        mainInterface.classList = ""; // Hide main interface
+        selectBoardContainer.classList = "container"; // Hide selector
         footer.style.opacity = 1;
         welcomeContainer.style.display = "block";
     });
 }
 
 // Select starting board
-button4x4.addEventListener("click", function() {
+function selectBoard(board) {
     clearContainers();
-    newGame(b4x4);
+    newGame(board);
     slideInterface();
     boardsSolved = 0;
+    this.blur(); // remove focus to prevent spacebar shuffle
+}
+
+const button4x4 = document.getElementById("button-4x4");
+const button5x5 = document.getElementById("button-5x5");
+const button6x6 = document.getElementById("button-6x6");
+const button7x7 = document.getElementById("button-7x7");
+
+button4x4.addEventListener("click", function() {
+    selectBoard(b4x4);
     boardsRemaining = [b5x5, b6x6, b7x7];
-    this.blur(); // remove focus from button to prevent spacebar shuffle
 });
 
 button5x5.addEventListener("click", function() {
-    clearContainers();
-    newGame(b5x5);
-    slideInterface();
-    boardsSolved = 0;
+    selectBoard(b5x5);
     boardsRemaining = [b4x4, b6x6, b7x7];
-    this.blur();
 });
 
 button6x6.addEventListener("click", function() {
-    clearContainers();
-    newGame(b6x6);
-    slideInterface();
-    boardsSolved = 0;
+    selectBoard(b6x6);
     boardsRemaining = [b4x4, b5x5, b7x7];
-    this.blur();
 });
 
 button7x7.addEventListener("click", function() {
-    clearContainers();
-    newGame(b7x7);
-    slideInterface();
-    boardsSolved = 0;
+    selectBoard(b7x7);
     boardsRemaining = [b4x4, b5x5, b6x6];
-    this.blur();
 });
 
 const clearContainers = () => {
