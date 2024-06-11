@@ -23,14 +23,13 @@ const setBoard = currBoard => {
     board.style.display = "block";
 }
 
-let shuffleLimit; // ADJUST DIFFICULT WITH SHUFFLE LIMIT
 
 // Fisher-Yates (array) shuffling algorithm for 2d array
 const shuffleBoard = array => {
     let currentIndex = boardSize * boardSize;
     let count = 0;
+    let shuffleLimit; // adjust puzzle difficulty
 
-    // bigger boards take too long
     if (boardSize == 4) shuffleLimit = 16;
     if (boardSize == 5) shuffleLimit = 4;
     if (boardSize == 6) shuffleLimit = 1;
@@ -46,16 +45,6 @@ const shuffleBoard = array => {
         let temp = array[currentRow][currentColumn];
         array[currentRow][currentColumn] = array[randomRow][randomColumn];
         array[randomRow][randomColumn] = temp;
-    }
-}
-
-// Durstenfeld shuffle to randomize boards left
-const shuffleRemaining = () => {
-    for (var i = boardsRemaining.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = boardsRemaining[i];
-        boardsRemaining[i] = boardsRemaining[j];
-        boardsRemaining[j] = temp;
     }
 }
 
@@ -96,14 +85,9 @@ const editBoard = (direction) => {
         boardArray[row][col - 1] = 0; 
         --empty[1];
     }
+    move();
 }
 
-const incrementMoveCount = () => {
-    ++moveCount; 
-    ++totalMoveCount; 
-    moveCounter.innerHTML = moveCount;
-    totalMoveCounter.innerHTML = totalMoveCount;
-}
 
 const themeNotification = document.getElementById("theme-notification");
 let colorThemes = [
